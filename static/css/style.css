@@ -1,0 +1,204 @@
+p,
+div,
+a,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+form,
+fieldset,
+legend,
+input,
+textarea,
+button,
+select,
+option,
+optgroup,
+label,
+blockquote,
+q,
+pre,
+code,
+table,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+img,
+iframe,
+embed,
+object,
+param,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+textarea {
+  resize: none;
+}
+label {
+  margin-top: 5px;
+}
+.modal {
+  display: none;
+}
+
+.modal .x {
+  position: absolute;
+  top: 22%;
+  right: 36%;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  background: #dedede;
+  border: 0;
+  color: black;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.card {
+  margin-block: 20px;
+}
+
+.card img {
+  max-height: 600px;
+  object-fit: cover;
+}
+
+.shown {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.1);
+  filter: blur(-5px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  align-items: center;
+}
+
+.card-header p,
+.card-header h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.card-header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.shown form {
+  display: inline;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 14px;
+  padding: 5%;
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+
+.timeline-body {
+  display: flex;
+  justify-content: space-between;
+  padding: 5%;
+  transition: filter 0.3s ease-in-out;
+}
+
+.timeline-body .items {
+  width: 60%;
+  max-width: 1200px;
+}
+
+.timeline-body .profile {
+  width: 30vw;
+  position: fixed;
+  border-radius: 15px;
+  padding: 25px;
+  right: 5%;
+  top: 5%;
+  display: inline;
+  text-align: left;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar img {
+  width: 40px;
+  height: 40px;
+}
+
+.current-weather {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.like-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.create-post {
+  margin-top: 20px;
+}
+.current-weather p {
+  margin: 0;
+  padding: 0;
+}

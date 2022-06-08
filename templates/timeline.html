@@ -1,0 +1,118 @@
+{% extends 'base.html' %} {% block content %}
+<section class="timeline-body">
+  <div class="items">
+    <h2>Feed</h2>
+    <div class="post-button">
+      <button class="btn btn-primary create-post">Create Post</button>
+    </div>
+    <div class="col-md-8 col-lg-6 col-xl-4 modal">
+      <button class="x">X</button>
+      <form method="post" enctype="multipart/form-data">
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <div class="alert alert-danger">
+          {% for message in messages %} {{ message }} {% endfor %}
+        </div>
+        {% endif %} {% endwith %}
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input
+            type="username"
+            id="form3Example3"
+            class="form-control form-control-lg"
+            placeholder="Subject"
+            name="title"
+          />
+          <label class="form-label" for="form3Example3">Title</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-3">
+          <textarea
+            id="form3Example4"
+            class="form-control form-control-lg"
+            placeholder="What's on your mind?"
+            name="body"
+            rows="5"
+          /></textarea>
+          <label class="form-label" for="form3Example4">Body</label>
+        </div>
+        <div class="mb-3">
+          <input name="image_file" class="form-control" type="file" id="formFile">
+          <label for="formFile" class="form-label">Upload Image</label>
+        </div>
+        <button
+        type="submit"
+        class="btn btn-primary btn-lg"
+        style="padding-left: 2.5rem; padding-right: 2.5rem"
+      >
+        Add Post
+      </button>
+      </form>
+    </div>
+    {% for item in items %}
+    <div class="card">
+      <div class="card-header">
+        <img
+          src="{{ url_for('static', filename='img/' + item.author_data.image_file) }}"
+          alt="{{ item.author.username }}"
+          class="avatar"
+        />
+        <div class="username">
+          <h4>{{ item.author_data.username }}</h4>
+          <p>{{ 
+            item.date_posted.strftime('%H:%M %b %d, %Y')
+          }}</p>
+        </div>  
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{item.title}}</h5>
+        <p class="card-text">{{item.content}}</p>
+      </div>
+      <img src="{{ url_for('static', filename='img/' + item.image_file) }}" alt="">
+      <div class="card-footer">
+        <div class="like-container">
+          <a href="
+          {{ url_for('like', id=item.id) }}
+
+        ">
+        <button type="button" class="btn btn-primary">
+          {% if item.isLiked %}
+            Unlike
+          {% else %}
+            Like
+          {% endif %}
+        </button>
+      </a>
+      {% if item.likes %}
+      <p>{{
+        [item.likes] | length
+      }} likes</p>
+      {% endif %}  
+        </div>
+        
+        
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="profile">
+    <h2>Profile</h2>
+    <div class="profile-info">
+      <div class="avatar">
+        <img src="{{ url_for('static', filename='img/' + user.image_file) }}" alt="avatar" />
+        <h3>{{ user.username }}</h3>
+      </div>
+      <a href="{{ url_for('logout') }}" class="btn btn-primary">Logout</a>
+    </div>
+    <div class="current-weather">
+      <h2>Current Weather</h2>
+      <div class="weather-info">
+        <div class="weather-temp">
+          <h3>{{ weather.main.temp |int }}&deg;</h3>
+        </div>
+        <div class="weather-desc">
+          <p>{{ weather.weather[0].description }}</p>
+        </div>
+      </div>
+</section>
+{% endblock %}
